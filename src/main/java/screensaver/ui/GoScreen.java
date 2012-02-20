@@ -1,28 +1,25 @@
-package screensaver;
+package screensaver.ui;
 
 import net.rim.device.api.system.Bitmap;
+import net.rim.device.api.ui.Color;
 import net.rim.device.api.ui.Field;
-import net.rim.device.api.ui.Manager;
-import net.rim.device.api.ui.XYEdges;
 import net.rim.device.api.ui.component.BasicEditField;
-import net.rim.device.api.ui.component.BitmapField;
 import net.rim.device.api.ui.component.ButtonField;
 import net.rim.device.api.ui.component.EditField;
 import net.rim.device.api.ui.component.TextField;
 import net.rim.device.api.ui.container.MainScreen;
-import net.rim.device.api.ui.container.VerticalFieldManager;
-import net.rim.device.api.ui.decor.Border;
-import net.rim.device.api.ui.decor.BorderFactory;
+import net.rim.device.api.ui.decor.Background;
+import net.rim.device.api.ui.decor.BackgroundFactory;
 
 public class GoScreen extends MainScreen {
 
     private final Worker worker;
     private final ButtonField screenshotButton;
     private final EditField delayField;
-    private final Manager screenshotManager;
+    private final ScreenshotsField screenshots;
 
     public GoScreen(Worker worker) {
-        super(USE_ALL_WIDTH);
+        super(NO_VERTICAL_SCROLL);
 
         if (worker == null) {
             throw new NullPointerException("worker==null");
@@ -41,32 +38,28 @@ public class GoScreen extends MainScreen {
                 TextField.DEFAULT_MAXCHARS, BasicEditField.FILTER_NUMERIC
                     | Field.USE_ALL_WIDTH);
 
-        this.screenshotManager = new VerticalFieldManager();
+        this.screenshots = new ScreenshotsField();
+
+        final Background background =
+            BackgroundFactory.createSolidBackground(Color.DIMGRAY);
+        this.setBackground(background);
 
         this.add(this.screenshotButton);
         this.add(this.delayField);
-        this.add(this.screenshotManager);
+        this.add(this.screenshots);
     }
 
-    public Field addScreenshot(Bitmap bitmap) {
+    public void addScreenshot(Bitmap bitmap) {
         if (bitmap == null) {
             throw new NullPointerException("bitmap==null");
         }
-        final int width = bitmap.getWidth();
-        final int height = bitmap.getHeight();
-        final int scaledWidth = width / 3;
-        final int scaledHeight = height / 3;
+
+        final int scaledWidth = bitmap.getWidth() / 2;
+        final int scaledHeight = bitmap.getHeight() / 2;
         final Bitmap scaledBitmap = new Bitmap(scaledWidth, scaledHeight);
         bitmap.scaleInto(scaledBitmap, Bitmap.FILTER_LANCZOS);
 
-        final BitmapField bitmapField =
-            new BitmapField(scaledBitmap, Field.FOCUSABLE);
-        final Border border =
-            BorderFactory.createRoundedBorder(new XYEdges(10, 10, 10, 10));
-        bitmapField.setBorder(Field.VISUAL_STATE_FOCUS, border);
-
-        this.screenshotManager.insert(bitmapField, 0);
-        return bitmapField;
+        this.screenshots.add(scaledBitmap);
     }
 
     public EditField getDelayField() {

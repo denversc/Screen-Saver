@@ -23,10 +23,11 @@ Description=Take screenshots of your BlackBerry device
 ExcludeFromBuildAll=0
 Exported=0
 [Files
-src\main\java\screensaver\GoScreen.java
 src\main\java\screensaver\GoScreenWorkerImpl.java
 src\main\java\screensaver\Main.java
 src\main\java\screensaver\ScreenshotRunnable.java
+src\main\java\screensaver\ui\GoScreen.java
+src\main\java\screensaver\ui\ScreenshotsField.java
 src\main\resources\icon.png
 ]
 HaveAlxImports=0

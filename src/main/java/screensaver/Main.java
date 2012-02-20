@@ -1,5 +1,7 @@
 package screensaver;
 
+import screensaver.ui.GoScreen;
+
 import net.rim.device.api.ui.UiApplication;
 
 public class Main extends UiApplication {

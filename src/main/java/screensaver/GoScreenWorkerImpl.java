@@ -2,9 +2,10 @@ package screensaver;
 
 import java.lang.ref.WeakReference;
 
+import screensaver.ui.GoScreen;
+
 import net.rim.device.api.system.Application;
 import net.rim.device.api.system.Bitmap;
-import net.rim.device.api.ui.Field;
 import net.rim.device.api.ui.component.Dialog;
 import net.rim.device.api.ui.component.EditField;
 
@@ -92,11 +93,8 @@ public class GoScreenWorkerImpl implements GoScreen.Worker {
 
             final Runnable runnable = new Runnable() {
                 public void run() {
-                    final Field field =
-                        ScreenshotListenerImpl.this.screen
-                            .addScreenshot(bitmap);
+                    ScreenshotListenerImpl.this.screen.addScreenshot(bitmap);
                     app.requestForeground();
-                    field.setFocus();
                 }
             };
 
