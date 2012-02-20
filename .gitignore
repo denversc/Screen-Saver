@@ -1,0 +1,10 @@
+.classpath
+.project
+.settings/
+target/
+ScreenSaver.cod
+ScreenSaver.cso
+ScreenSaver.debug
+ScreenSaver.jad
+ScreenSaver.jar
+ScreenSaver.rapc

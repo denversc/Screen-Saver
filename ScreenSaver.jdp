@@ -1,0 +1,56 @@
+## RIM Java Development Environment
+# RIM Project file
+#
+# This file is generated and managed by BlackBerry developer tools.
+# It SHOULD NOT BE modified manually.
+#
+AddOn=0
+AlwaysBuild=0
+[AlxImports
+]
+AutoRestart=0
+[ClassProtection
+]
+[CustomBuildFiles
+]
+[CustomBuildRules
+]
+[DefFiles
+]
+[DependsOn
+]
+Description=Take screenshots of your BlackBerry device
+ExcludeFromBuildAll=0
+Exported=0
+[Files
+src\main\java\screensaver\GoScreen.java
+src\main\java\screensaver\GoScreenWorkerImpl.java
+src\main\java\screensaver\Main.java
+src\main\java\screensaver\ScreenshotRunnable.java
+src\main\resources\icon.png
+]
+HaveAlxImports=0
+HaveDefs=0
+HaveImports=0
+[Icons
+src\main\resources\icon.png
+]
+[ImplicitRules
+]
+[Imports
+]
+Listing=0
+Options=-quiet 
+OutputFileName=ScreenSaver
+[PackageProtection
+]
+RibbonPosition=0
+[RolloverIcons
+]
+RunOnStartup=0
+SkipCompile=0
+StartupTier=7
+SystemModule=0
+Type=0
+Vendor=Denver Coneybeare
+Version=1.0.0
